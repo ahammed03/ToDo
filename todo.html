@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,23 +8,29 @@
     <link rel="stylesheet" href="todo.css">
 
 </head>
+
 <body>
     <div class="container">
         <h1>TODO</h1>
         <div class="search-add">
-        <input type="text" placeholder="Enter Task"> 
-        <button>Add</button>
+            <input type="text" id="taskInput" placeholder="Enter Task">
+            <button id="addTaskButton">Add</button>
         </div>
         <div class="list">
-            <div class="task-box">
-                <p class="task">Shopping</p><button class="completed">&#x2713;</button><button class="remove">&#9249;</button>
-            </div>
+            <!-- Tasks will be added here -->
+            <p class="dummy">Welcome</p>
+            
         </div>
-
-
-
-
+        <p class="data">
+            <span>Total:</span>
+            <span id="totalTasks">0</span>
+            <span>completed:</span>
+            <span id="completedTasks">0</span>
+            <span>Remaining:</span>
+            <span id="remainingTasks">0</span>
+        </p>
     </div>
     <script src="todo.js"></script>
 </body>
+
 </html>
