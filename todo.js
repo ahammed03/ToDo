@@ -1,69 +1,76 @@
-inputElement=document.querySelector('input');
-addButton=document.querySelector('.search-add button');
+const taskInput = document.getElementById('taskInput');
+const addTaskButton = document.getElementById('addTaskButton');
+const totalTasksElement = document.getElementById('totalTasks');
+const completedTasksElement = document.getElementById('completedTasks');
+const remainingTasksElement = document.getElementById('remainingTasks');
+const dummyElement=document.querySelector('.dummy');
 
+let count = 0;
+let completed = 0;
+let remain = count - completed;
 
-function addnew(){
-    if (inputElement.value!=""){
-    const newcontainer=document.createElement('div');
-    newcontainer.classList.add('task-box');
-    const pTag=document.createElement('p');
-    pTag.classList.add('task');
-    pTag.textContent=inputElement.value;
-    const addBtn =document.createElement('button');
-    addBtn.classList.add('completed');
-    addBtn.innerHTML='&#x2713;';
-    const delBtn =document.createElement('button');
-    delBtn.classList.add('remove')
-    delBtn.innerHTML='&#9249;';
-    newcontainer.appendChild(pTag);
-    newcontainer.appendChild(addBtn);
-    newcontainer.appendChild(delBtn);
-    const maincontainer=document.querySelector('.list');
-    maincontainer.appendChild(newcontainer);
-    delBtn.addEventListener('click',()=>{
-        newcontainer.remove();
-    })
-    addBtn.addEventListener('click',()=>{
-        pTag.style.backgroundColor='gray';
-        addBtn.style.backgroundColor='gray';
-    })
-}
+function updateTaskCounts() {
+    totalTasksElement.textContent = count;
+    completedTasksElement.textContent = completed;
+    remainingTasksElement.textContent = remain;
 }
 
-addButton.addEventListener('click',addnew)
+addTaskButton.addEventListener('click', function () {
+    if (taskInput.value !== '') {
+        dummyElement.classList.add('hidden')
+        const newContainer = document.createElement('div');
+        newContainer.classList.add('task-box');
 
-const completedButton =document.querySelector('.completed');
+        const pTag = document.createElement('p');
+        pTag.classList.add('task');
+        pTag.textContent = taskInput.value;
 
-completedButton.addEventListener('click',()=>{
-    const taskElement=document.querySelector('.task');
-    taskElement.style.backgroundColor='gray';
-    completedButton.style.backgroundColor='gray';
+        const addBtn = document.createElement('button');
+        addBtn.classList.add('completed');
+        addBtn.innerHTML = '&#x2713';
 
-})
+        const delBtn = document.createElement('button');
+        delBtn.classList.add('remove');
+        delBtn.innerHTML = '&#9249';
 
+        newContainer.appendChild(pTag);
+        newContainer.appendChild(addBtn);
+        newContainer.appendChild(delBtn);
 
+        const mainContainer = document.querySelector('.list');
+        mainContainer.appendChild(newContainer);
 
-const removeButtons = document.querySelectorAll('.remove');
+        delBtn.addEventListener('click', function () {
+            newContainer.remove();
+            count--;
+            remain--;
+            updateTaskCounts();
+        });
 
-removeButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        // Get the parent div of the clicked button
-        const div = button.parentNode;
+        let isGray = true;
 
-        // Remove the parent div from the container
-        div.remove();
-    });
+        addBtn.addEventListener('click', function () {
+            if (isGray) {
+                pTag.style.backgroundColor = 'gray';
+                addBtn.style.backgroundColor = 'gray';
+                completed++;
+                remain--;
+                isGray = false;
+            } else {
+                pTag.style.backgroundColor = 'white';
+                addBtn.style.backgroundColor = 'white';
+                addBtn.style.color = 'green';
+                completed--;
+                remain++;
+                isGray = true;
+            }
+            updateTaskCounts();
+        });
+
+        count++;
+        remain++;
+        updateTaskCounts();
+
+        taskInput.value = ''; // Clear the input field
+    }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-// inputElement.addEventListener('keyup')
