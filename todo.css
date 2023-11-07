@@ -6,7 +6,6 @@
 body{
     height: 100vh;
     width: 100vw;
-    background-color: rgba(175, 183, 126, 0.362);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,45 +15,57 @@ body{
 .container{
     text-align: center;
     padding: 10px;
-    background-color: rgba(43, 217, 237, 0.362);
-    width: 400px;
+    background-color:#3a86ff;
+    /* border: solid 2px rgb(0, 0, 0); */
+    width: 350px;
     height: 400px;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    box-shadow: 5px 5px #555;
+
+}
+h1{
+    color: white;
 }
 
 .search-add{
     padding: 4px;
     height: 50px;
-    width: 230px;
+    width: 250px;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    border: none;
 }
 
+
 .search-add input{
-    height: 30px;
-    width: 70%;
+    height: 60%;
+    width: 65%;
     border: none;
     border-radius: 5px;
+    padding-left: 5px;
 }
 .search-add button{
-    height: 25px;
-    width: 20%;
+    height: 60%;
+    width: 30%;
     border: none;
-    border-radius: 3px;
+    border-radius: 10px;
+    color: white;
+    background-color: rgb(231, 104, 0);
 
 }
 
 .list{
-    height: 100px;
-    border: solid 2px rgb(164, 161, 161);
+    height: 150px;
+    width: 260px;
+    background-color: white;
     border-radius: 10px;
     overflow: auto;
-    padding: 10px;
+    padding: 10px 3px;
+   
 
 }
 
@@ -62,31 +73,33 @@ body{
 .task-box{
     display:flex;
     justify-content: space-around;
-    width: 230px;
-    height: 30px;
+    width: 96%;
+    height: 25px;
     padding: 5px;
     align-items: center;
     
 }
 
 .task{
-    width: 70%;
-    background-color: white;
+    width: 65%;
+    height: 90%;
+    border:solid 2px #3a86ff;
     padding: 2px;
-    border: none;
-    border-radius: 3px;
+    color:#3a86ff;
+    border-radius: 5px;
 }
 
 .task-box button{
     width: 10%;
-    height: 20px;
-    border: none;
+    height: 22px;
     border-radius: 3px;
+
     
 }
 .completed{
     background-color:white;
     color: green;
+    border: solid 2px green;
 
 }
 
@@ -100,12 +113,21 @@ body{
     font-size: 15px;
     color: red;
     background-color: white;
+    border: solid red 2px;
 }
 .remove:hover{
     background-color: red;
     color: white;
 
 
+}
+
+.data{
+    margin-top: 10px;
+    height: 23px;
+    background-color: white;
+    padding:3px 5px;
+    border-radius: 5px;
 }
 
 /* width */
@@ -130,5 +152,13 @@ body{
   }
 
 
+
+
+.dummy{
+font-size: larger;
+  }
+.hidden{
+    display:none;
+}
 
 
